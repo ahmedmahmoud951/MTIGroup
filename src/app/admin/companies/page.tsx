@@ -219,11 +219,25 @@ export default function AdminCompaniesPage() {
       return;
     }
 
+    // Client-side duplicate slug check
+    const cleanSlug = slug.toLowerCase().trim().replace(/\s+/g, "-");
+    const isDuplicate = companies.some(
+      (c) => c.slug.toLowerCase() === cleanSlug && c.id !== editingCompany?.id
+    );
+    if (isDuplicate) {
+      setSaveError(
+        language === "ar"
+          ? `المعرف الإنجليزي (Slug: "${cleanSlug}") مستخدم بالفعل لشركة أخرى. يرجى كتابة معرّف مختلف مثل "${cleanSlug}-group" أو اسم الشركة الجديد.`
+          : `Slug "${cleanSlug}" is already taken by another company. Please enter a unique slug.`
+      );
+      return;
+    }
+
     setIsSaving(true);
 
     const payload: any = {
       name,
-      slug: slug.toLowerCase().replace(/\s+/g, "-"),
+      slug: cleanSlug,
       shortDescription: shortDesc,
       description: desc,
       logoUrl: logoUrl.trim(),
@@ -603,9 +617,20 @@ export default function AdminCompaniesPage() {
                       type="text"
                       required
                       value={name}
-                      onChange={(e) => setName(e.target.value)}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        setName(val);
+                        if (!editingCompany) {
+                          const autoSlug = val
+                            .toLowerCase()
+                            .trim()
+                            .replace(/[^a-z0-9]+/g, "-")
+                            .replace(/^-+|-+$/g, "");
+                          setSlug(autoSlug);
+                        }
+                      }}
                       className="w-full px-3.5 py-2.5 rounded-xl bg-[#140307]/80 border border-sky-400/20 text-white focus:outline-none focus:border-sky-300 focus:ring-2 focus:ring-sky-400/20"
-                      placeholder="MTI Technology"
+                      placeholder="e.g. MTI Redline"
                     />
                   </div>
                   <div>
@@ -615,7 +640,7 @@ export default function AdminCompaniesPage() {
                       value={nameAr}
                       onChange={(e) => setNameAr(e.target.value)}
                       className="w-full px-3.5 py-2.5 rounded-xl bg-[#140307]/80 border border-sky-400/20 text-white focus:outline-none focus:border-sky-300 focus:ring-2 focus:ring-sky-400/20"
-                      placeholder="إم تي آي للتكنولوجيا والحلول السحابية"
+                      placeholder="مثال: إم تي آي ردلاين"
                     />
                   </div>
                 </div>
@@ -623,14 +648,19 @@ export default function AdminCompaniesPage() {
                 {/* Slug & Display Order */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sky-200 font-bold mb-1.5">{t("admin.companies.slugField")} *</label>
+                    <label className="block text-sky-200 font-bold mb-1.5">
+                      <span>{t("admin.companies.slugField")} *</span>
+                      <span className="text-[10px] text-sky-300/70 block font-normal">
+                        {language === "ar" ? "(معرف الرابط الفريد، مثل: redline)" : "(Unique URL slug, e.g. redline)"}
+                      </span>
+                    </label>
                     <input
                       type="text"
                       required
                       value={slug}
-                      onChange={(e) => setSlug(e.target.value)}
+                      onChange={(e) => setSlug(e.target.value.toLowerCase().replace(/\s+/g, "-"))}
                       className="w-full px-3.5 py-2.5 rounded-xl bg-[#140307]/80 border border-sky-400/20 text-white font-mono focus:outline-none focus:border-sky-300 focus:ring-2 focus:ring-sky-400/20"
-                      placeholder="mti-technology"
+                      placeholder="e.g. redline or mti-redline"
                     />
                   </div>
                   <div>
