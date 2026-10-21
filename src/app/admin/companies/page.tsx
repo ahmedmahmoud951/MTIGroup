@@ -65,10 +65,14 @@ export default function AdminCompaniesPage() {
 
   // Predefined logo templates
   const presetLogos = [
-    { name: "MTI Tech (Cyan Hex)", url: "/images/companies/tech-logo.svg" },
-    { name: "MTI Contracting (Tower)", url: "/images/companies/contracting-logo.svg" },
-    { name: "MTI Logistics (Wings)", url: "/images/companies/logistics-logo.svg" },
-    { name: "MTI Corporate (Diamond)", url: "/images/companies/default-logo.svg" },
+    { name: "MTI Holding", url: "/images/companies/mti-holding.png" },
+    { name: "Red Line", url: "/images/companies/redline.png" },
+    { name: "ECEE", url: "/images/companies/ecee.png" },
+    { name: "MTI Engineering", url: "/images/companies/mti-eng.png" },
+    { name: "Royal", url: "/images/companies/royal.png" },
+    { name: "MTI Tech (Cyan)", url: "/images/companies/tech-logo.svg" },
+    { name: "MTI Contracting", url: "/images/companies/contracting-logo.svg" },
+    { name: "MTI Logistics", url: "/images/companies/logistics-logo.svg" },
   ];
 
   const fetchCompanies = async () => {

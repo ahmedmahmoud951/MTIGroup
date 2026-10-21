@@ -17,7 +17,7 @@ export default function Navbar() {
   const { language, toggleLanguage, t } = useLanguage();
   const { isAuthenticated, user } = useAuth();
   const [signalRStatus, setSignalRStatus] = useState<SignalRStatus>("Connecting");
-  const [holdingLogo, setHoldingLogo] = useState<string | null>(null);
+  const [holdingLogo, setHoldingLogo] = useState<string | null>("/images/companies/mti-holding.png");
   const [holdingNameAr, setHoldingNameAr] = useState<string>("مجموعة إم تي آي");
   const [holdingNameEn, setHoldingNameEn] = useState<string>("MTI Group");
 
@@ -75,7 +75,7 @@ export default function Navbar() {
                   height={40}
                   className="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(56,189,248,0.6)]"
                   unoptimized={true}
-                  onError={() => setHoldingLogo("/images/companies/mti-group-logo.svg")}
+                  onError={() => setHoldingLogo("/images/companies/mti-holding.png")}
                 />
               ) : (
                 <span className="font-black text-lg ice-cyan-gradient-text tracking-wider">

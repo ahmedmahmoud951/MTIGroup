@@ -31,7 +31,7 @@ interface OrbitalConstellationProps {
 
 export default function OrbitalConstellation({
   companies,
-  groupLogoUrl = "/images/companies/mti-group-logo.svg",
+  groupLogoUrl = "/images/companies/mti-holding.png",
   groupName = "MTI Group Holding",
   language = "ar",
 }: OrbitalConstellationProps) {

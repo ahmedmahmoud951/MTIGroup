@@ -174,7 +174,7 @@ export default function HomePage() {
   }, [fetchCompanies, fetchHoldingSettings, isAr]);
 
   // Holding Identity variables
-  const groupLogoUrl = holdingSettings.Group_LogoUrl || "/images/companies/mti-group-logo.svg";
+  const groupLogoUrl = holdingSettings.Group_LogoUrl || "/images/companies/mti-holding.png";
   const groupName = isAr
     ? holdingSettings.Group_Name_ar || "مجموعة شركات إم تي آي القابضة"
     : holdingSettings.Group_Name_en || "MTI Group Holding";
