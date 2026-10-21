@@ -455,14 +455,14 @@ export default function OrbitalConstellation({
             {/* Enhanced Logo Viewport: 100% Circular, High-Contrast & Crystal Clear */}
             <div className="orbital-logo-viewport rounded-full transition-transform duration-300 group-hover:scale-105">
               {groupLogoUrl ? (
-                <div className="w-full h-full rounded-full overflow-hidden flex items-center justify-center p-1 bg-white/5">
+                <div className="w-full h-full rounded-full overflow-hidden flex items-center justify-center p-0.5 bg-white/5">
                   <Image
                     key={groupLogoUrl}
                     src={getImageUrl(groupLogoUrl)}
                     alt={groupName || "MTI Group"}
-                    width={120}
-                    height={120}
-                    className="w-full h-full object-contain filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]"
+                    width={150}
+                    height={150}
+                    className="w-full h-full object-contain filter drop-shadow-[0_2px_10px_rgba(0,0,0,0.35)] p-0.5"
                     priority
                     unoptimized={true}
                     onError={(e) => {
@@ -474,7 +474,7 @@ export default function OrbitalConstellation({
                   />
                 </div>
               ) : (
-                <div className="w-full h-full rounded-full flex items-center justify-center font-black text-3xl ice-cyan-gradient-text">
+                <div className="w-full h-full rounded-full flex items-center justify-center font-black text-4xl ice-cyan-gradient-text">
                   MTI
                 </div>
               )}
@@ -604,7 +604,7 @@ export default function OrbitalConstellation({
                         ? `0 0 40px ${sector.glow}, 0 12px 35px rgba(0,0,0,0.9)`
                         : "0 8px 24px rgba(0,0,0,0.75)"
                     }}
-                    className={`w-24 h-24 sm:w-28 sm:h-28 rounded-2xl p-2.5 flex items-center justify-center transition-all duration-300 relative border-2 ${
+                    className={`w-28 h-28 sm:w-32 sm:h-32 rounded-2xl p-1.5 flex items-center justify-center transition-all duration-300 relative border-2 ${
                       isActive ? "bg-[#2c061d]/95" : "bg-[#190312]/90"
                     }`}
                   >
@@ -612,22 +612,22 @@ export default function OrbitalConstellation({
                     {isActive && (
                       <div
                         style={{ backgroundColor: sector.color }}
-                        className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full border-2 border-white animate-core-beacon shadow-md flex items-center justify-center"
+                        className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full border-2 border-white animate-core-beacon shadow-md flex items-center justify-center z-10"
                       >
                         <Zap className="w-2 h-2 text-white" />
                       </div>
                     )}
 
-                    {/* Company Logo Disc: High-Resolution & Clean Display */}
-                    <div className="w-full h-full rounded-xl bg-[#12020b]/95 border border-sky-400/35 flex items-center justify-center p-2.5 overflow-hidden">
+                    {/* Company Logo Disc: Maximized to fill the full space cleanly */}
+                    <div className="w-full h-full rounded-xl bg-gradient-to-br from-white/10 via-[#14020d]/95 to-[#080106] border border-sky-400/40 flex items-center justify-center p-1 overflow-hidden relative shadow-inner">
                       {company.logoUrl ? (
                         <Image
                           key={`${company.id}-${company.logoUrl}`}
                           src={getImageUrl(company.logoUrl)}
                           alt={company.name}
-                          width={75}
-                          height={75}
-                          className="w-full h-full object-contain filter drop-shadow-[0_0_12px_rgba(255,255,255,0.5)]"
+                          width={115}
+                          height={115}
+                          className="w-full h-full object-contain filter drop-shadow-[0_2px_10px_rgba(255,255,255,0.45)] transition-transform duration-300 group-hover:scale-105"
                           unoptimized={true}
                           onError={(e) => {
                             const target = e.currentTarget as HTMLImageElement;
@@ -637,7 +637,7 @@ export default function OrbitalConstellation({
                           }}
                         />
                       ) : (
-                        <SectorIcon className="w-9 h-9 text-sky-200" />
+                        <SectorIcon className="w-12 h-12 text-sky-200" />
                       )}
                     </div>
                   </div>
