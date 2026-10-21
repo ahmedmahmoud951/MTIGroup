@@ -1,0 +1,488 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #13030c;
+  --foreground: #ffffff;
+  --burgundy-primary: #9f1239;
+  --burgundy-deep: #3b0616;
+  --burgundy-iphone: #1d0411;
+  --ice-cyan: #38bdf8;
+  --ice-frost: #e0f2fe;
+}
+
+/* Base Body: Distinctive Frosted Glacial Ice Blue blended with Apple iPhone Deep Burgundy Canvas */
+body {
+  color: var(--foreground);
+  background-color: #0b131e;
+  background-image: 
+    /* 1. Primary Luminous Glacial Ice Crown & Aurora from top-center */
+    radial-gradient(ellipse 110% 80% at 50% -8%, rgba(56, 189, 248, 0.44) 0%, rgba(224, 242, 254, 0.3) 30%, transparent 72%),
+    /* 2. Crystalline Glacial Frost White Mist in upper left */
+    radial-gradient(ellipse 85% 65% at 8% 14%, rgba(186, 230, 253, 0.35) 0%, transparent 62%),
+    /* 3. Apple iPhone Iconic Deep Velvet Burgundy framing aura top-right */
+    radial-gradient(ellipse 75% 60% at 92% 16%, rgba(159, 18, 57, 0.28) 0%, transparent 62%),
+    /* 4. Expansive Mid-screen Glacial Ice illumination for crystal clarity */
+    radial-gradient(ellipse 100% 60% at 50% 48%, rgba(56, 189, 248, 0.24) 0%, rgba(224, 242, 254, 0.14) 36%, transparent 78%),
+    /* 5. Left lateral ice mist */
+    radial-gradient(ellipse 75% 60% at 5% 65%, rgba(125, 211, 252, 0.26) 0%, transparent 65%),
+    /* 6. Lower velvet burgundy warmth balancing the ice */
+    radial-gradient(ellipse 80% 60% at 85% 82%, rgba(136, 19, 55, 0.24) 0%, transparent 65%),
+    /* 7. Lower left ice-frost reservoir */
+    radial-gradient(ellipse 75% 55% at 15% 90%, rgba(56, 189, 248, 0.22) 0%, transparent 62%),
+    /* 8. Foundation canvas: Refined Frosted Arctic Obsidian & Midnight Cabernet Velvet */
+    linear-gradient(170deg, #0b131e 0%, #130a17 22%, #1e0719 50%, #120a1a 78%, #08101a 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  overflow-x: hidden;
+}
+
+/* Subtle Crystalline Frost Mesh Texture overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(rgba(224, 242, 254, 0.2) 1.2px, transparent 1.2px),
+    linear-gradient(180deg, rgba(56, 189, 248, 0.12) 0%, transparent 35%, rgba(224, 242, 254, 0.08) 65%, rgba(159, 18, 57, 0.08) 100%);
+  background-size: 36px 36px, 100% 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ==============================================================
+   SEAMLESS FROSTED ICE BLUE & IPHONE DEEP BURGUNDY DESIGN SYSTEM
+   ============================================================== */
+
+/* Pure Glacial Ice Glass Panel with iPhone Deep Burgundy core */
+.glass-ice {
+  background: linear-gradient(135deg, rgba(224, 242, 254, 0.18) 0%, rgba(56, 189, 248, 0.12) 35%, rgba(30, 6, 20, 0.85) 100%);
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  border: 1.5px solid rgba(186, 230, 253, 0.55);
+  box-shadow: 0 24px 60px -10px rgba(0, 0, 0, 0.85), 0 0 30px rgba(56, 189, 248, 0.28), inset 0 1px 3px rgba(224, 242, 254, 0.7);
+}
+
+/* Dedicated iPhone Deep Burgundy & Frosted Glacial Ice Panel */
+.glass-ice-burgundy {
+  background: linear-gradient(165deg, rgba(56, 189, 248, 0.1) 0%, rgba(42, 7, 28, 0.92) 28%, rgba(24, 4, 16, 0.95) 65%, rgba(12, 16, 26, 0.98) 100%);
+  backdrop-filter: blur(36px) saturate(200%);
+  -webkit-backdrop-filter: blur(36px) saturate(200%);
+  border: 1.5px solid rgba(186, 230, 253, 0.55);
+  box-shadow: 0 30px 80px -10px rgba(0, 0, 0, 0.95), 0 0 45px rgba(56, 189, 248, 0.3), inset 0 1px 3px rgba(224, 242, 254, 0.75);
+}
+
+/* The Signature Glacial Ice & iPhone Deep Burgundy Card */
+.glass-ice-card {
+  background: linear-gradient(160deg, rgba(56, 189, 248, 0.08) 0%, rgba(38, 6, 25, 0.88) 30%, rgba(22, 4, 15, 0.94) 70%, rgba(10, 14, 24, 0.98) 100%);
+  backdrop-filter: blur(30px) saturate(190%);
+  -webkit-backdrop-filter: blur(30px) saturate(190%);
+  border: 1.5px solid rgba(186, 230, 253, 0.5);
+  box-shadow: 
+    0 24px 60px -10px rgba(0, 0, 0, 0.92),
+    0 0 30px -5px rgba(56, 189, 248, 0.28),
+    inset 0 1px 2px rgba(224, 242, 254, 0.65);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Crisp Top Glacial Light Refraction Rim */
+.glass-ice-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.8) 20%, rgba(224, 242, 254, 1) 50%, rgba(56, 189, 248, 0.8) 80%, transparent);
+  opacity: 0.95;
+  transition: opacity 0.4s ease;
+}
+
+/* Card Hover Elevation & Cyan-Ice Radiance */
+.glass-ice-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  background: linear-gradient(160deg, rgba(56, 189, 248, 0.14) 0%, rgba(54, 8, 35, 0.92) 30%, rgba(32, 5, 21, 0.96) 70%, rgba(14, 18, 30, 0.99) 100%);
+  border-color: rgba(224, 242, 254, 0.85);
+  box-shadow: 
+    0 35px 80px -10px rgba(0, 0, 0, 0.96),
+    0 0 45px rgba(56, 189, 248, 0.48),
+    inset 0 1px 3px rgba(224, 242, 254, 0.9);
+}
+
+.glass-ice-card:hover::before {
+  opacity: 1;
+}
+
+/* ==============================================================
+   ICONIC LOGO PEDESTAL (منصة عرض اللوجو الكريستالية الفاخرة)
+   ============================================================== */
+.logo-pedestal {
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 1.25rem;
+  background: linear-gradient(145deg, rgba(56, 189, 248, 0.25) 0%, rgba(38, 6, 24, 0.82) 48%, rgba(18, 3, 11, 0.95) 100%);
+  border: 1.5px solid rgba(186, 230, 253, 0.55);
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.7),
+    0 0 25px rgba(56, 189, 248, 0.3),
+    inset 0 1px 2px rgba(224, 242, 254, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem;
+  flex-shrink: 0;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+/* Inner Light Ring for the Pedestal */
+.logo-pedestal::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  pointer-events: none;
+}
+
+.group:hover .logo-pedestal {
+  transform: translateY(-2px) scale(1.06);
+  border-color: rgba(186, 230, 253, 0.85);
+  box-shadow: 
+    0 14px 32px rgba(0, 0, 0, 0.65),
+    0 0 35px rgba(56, 189, 248, 0.55),
+    inset 0 1px 3px rgba(224, 242, 254, 0.9);
+}
+
+/* ==============================================================
+   METRIC COMPARTMENTS & PILLS
+   ============================================================== */
+
+/* Coordinated Metric Compartment (حجرات البيانات المنسقة بوضوح) */
+.metric-compartment {
+  background: linear-gradient(145deg, rgba(14, 165, 233, 0.08) 0%, rgba(15, 23, 42, 0.4) 60%, rgba(76, 5, 25, 0.2) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 1rem;
+  padding: 0.875rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.metric-compartment:hover {
+  border-color: rgba(56, 189, 248, 0.55);
+  background: linear-gradient(145deg, rgba(14, 165, 233, 0.15) 0%, rgba(15, 23, 42, 0.55) 60%, rgba(76, 5, 25, 0.3) 100%);
+}
+
+/* Frosted Glacial Ice Pill Badges */
+.glass-ice-pill {
+  background: linear-gradient(135deg, rgba(224, 242, 254, 0.14) 0%, rgba(56, 189, 248, 0.1) 60%, rgba(76, 5, 25, 0.25) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(125, 211, 252, 0.45);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35), 0 0 15px rgba(56, 189, 248, 0.2), inset 0 1px 1px rgba(224, 242, 254, 0.6);
+}
+
+/* Interlaced Text Gradients with Glacial Cyan */
+.ice-gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 35%, #7dd3fc 70%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.burgundy-ice-gradient-text {
+  background: linear-gradient(135deg, #e0f2fe 0%, #fecdd3 25%, #fb7185 55%, #e11d48 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ice-cyan-gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #bae6fd 30%, #38bdf8 70%, #0284c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #fef08a 35%, #fbbf24 70%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ==============================================================
+   BUTTONS (أزرار فاخرة متناسقة)
+   ============================================================== */
+
+/* Interlaced Luxury Button with Frosted Cyan Ice Rim (زر فخم متدرج بالبرجندي الغامق الملكي وإطار ثلجي متوهج) */
+.luxury-ice-button {
+  background: linear-gradient(135deg, #be123c 0%, #9f1239 45%, #4c0519 100%);
+  border: 1.5px solid rgba(186, 230, 253, 0.6);
+  box-shadow: 0 14px 32px -5px rgba(159, 18, 57, 0.65), 0 0 24px rgba(56, 189, 248, 0.35), inset 0 1px 2px rgba(224, 242, 254, 0.75);
+  backdrop-filter: blur(14px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxury-ice-button:hover {
+  background: linear-gradient(135deg, #e11d48 0%, #be123c 45%, #881337 100%);
+  border-color: rgba(224, 242, 254, 0.95);
+  box-shadow: 0 20px 48px -5px rgba(225, 29, 72, 0.8), 0 0 35px rgba(56, 189, 248, 0.6), inset 0 1px 3px rgba(255, 255, 255, 0.95);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.luxury-ice-button:active {
+  transform: translateY(0) scale(0.99);
+}
+
+/* Secondary Frosted Ice Button */
+.glass-ice-button {
+  background: rgba(224, 242, 254, 0.08);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(125, 211, 252, 0.35);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.glass-ice-button:hover {
+  background: rgba(224, 242, 254, 0.16);
+  border-color: rgba(186, 230, 253, 0.75);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45), 0 0 20px rgba(56, 189, 248, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.7);
+  transform: translateY(-2px);
+}
+
+/* Custom Frosted Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #110209;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(56, 189, 248, 0.6) 0%, rgba(159, 18, 57, 0.8) 100%);
+  border-radius: 5px;
+  border: 2px solid #110209;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(125, 211, 252, 0.85) 0%, rgba(225, 29, 72, 0.95) 100%);
+}
+
+/* ==============================================================
+   MODAL SCROLL & PINNED FOOTER ARCHITECTURE
+   ============================================================== */
+
+/* Modal Outer Glass Container - iPhone Deep Burgundy & Frosted Ice */
+.modal-glass-container {
+  background: linear-gradient(165deg, rgba(42, 8, 28, 0.97) 0%, rgba(26, 4, 16, 0.98) 50%, rgba(14, 2, 9, 0.99) 100%);
+  backdrop-filter: blur(36px) saturate(190%);
+  -webkit-backdrop-filter: blur(36px) saturate(190%);
+  border: 1.5px solid rgba(56, 189, 248, 0.4);
+  box-shadow: 
+    0 25px 70px -10px rgba(0, 0, 0, 0.95),
+    0 0 35px rgba(56, 189, 248, 0.25),
+    inset 0 1px 2px rgba(224, 242, 254, 0.5);
+  display: flex;
+  flex-direction: column;
+  max-height: 88vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dedicated Inner Scrollable Body with High-Contrast Ice Scrollbar */
+.modal-scroll-body {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(56, 189, 248, 0.6) rgba(26, 4, 16, 0.6);
+}
+
+.modal-scroll-body::-webkit-scrollbar {
+  width: 7px;
+}
+
+.modal-scroll-body::-webkit-scrollbar-track {
+  background: rgba(18, 3, 11, 0.8);
+  border-radius: 4px;
+}
+
+.modal-scroll-body::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(56, 189, 248, 0.7) 0%, rgba(159, 18, 57, 0.8) 100%);
+  border-radius: 4px;
+  border: 1px solid rgba(224, 242, 254, 0.3);
+}
+
+.modal-scroll-body::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(125, 211, 252, 0.95) 0%, rgba(225, 29, 72, 1) 100%);
+}
+
+/* Modal Pinned Sticky Footer - Always 100% visible */
+.modal-sticky-footer {
+  flex-shrink: 0;
+  border-top: 1px solid rgba(56, 189, 248, 0.3);
+  background: linear-gradient(180deg, rgba(26, 4, 16, 0.95) 0%, rgba(14, 2, 9, 0.98) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  position: sticky;
+  bottom: 0;
+  z-index: 20;
+}
+
+/* ==============================================================
+   ORBITAL CONSTELLATION ECOSYSTEM (منظومة الكواكب المدارية التفاعلية)
+   ============================================================== */
+@keyframes celestialSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes celestialSpinReverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes beamDashFlow {
+  0% { stroke-dashoffset: 60; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes orbitalWavePulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.25;
+  }
+}
+
+@keyframes coreBeaconBlink {
+  0%, 100% { opacity: 1; filter: drop-shadow(0 0 12px #38bdf8); }
+  50% { opacity: 0.6; filter: drop-shadow(0 0 4px #38bdf8); }
+}
+
+.animate-celestial-spin {
+  animation: celestialSpin 60s linear infinite;
+}
+
+.animate-celestial-spin-reverse {
+  animation: celestialSpinReverse 75s linear infinite;
+}
+
+.animate-beam-flow {
+  animation: beamDashFlow 2s linear infinite;
+}
+
+.animate-orbital-wave {
+  animation: orbitalWavePulse 3.5s ease-in-out infinite;
+}
+
+.animate-core-beacon {
+  animation: coreBeaconBlink 2s ease-in-out infinite;
+}
+
+.orbital-center-hub {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(92, 7, 36, 0.98) 0%, rgba(32, 5, 20, 0.99) 55%, rgba(14, 2, 8, 1) 100%);
+  border: 2.5px solid rgba(56, 189, 248, 0.85);
+  box-shadow: 
+    0 0 65px rgba(56, 189, 248, 0.6),
+    0 0 120px rgba(244, 63, 94, 0.45),
+    inset 0 0 40px rgba(56, 189, 248, 0.45);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 25;
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (max-width: 640px) {
+  .orbital-center-hub {
+    width: 145px;
+    height: 145px;
+  }
+}
+
+.orbital-center-hub:hover {
+  transform: scale(1.06);
+  border-color: rgba(224, 242, 254, 1);
+  box-shadow: 
+    0 0 90px rgba(56, 189, 248, 0.8),
+    0 0 150px rgba(244, 63, 94, 0.65),
+    inset 0 0 50px rgba(56, 189, 248, 0.6);
+}
+
+.orbital-logo-viewport {
+  width: 130px;
+  height: 130px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.98) 0%, rgba(240, 249, 255, 0.95) 70%, rgba(186, 230, 253, 0.92) 100%);
+  border: 3px solid rgba(56, 189, 248, 0.95);
+  box-shadow: 
+    0 0 35px rgba(56, 189, 248, 0.75),
+    0 10px 25px rgba(0, 0, 0, 0.75),
+    inset 0 0 20px rgba(56, 189, 248, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (max-width: 640px) {
+  .orbital-logo-viewport {
+    width: 95px;
+    height: 95px;
+    padding: 0.55rem;
+  }
+}
+
+.orbital-satellite-disc {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.orbital-satellite-disc:hover,
+.orbital-satellite-disc.active {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 30px rgba(56, 189, 248, 0.75));
+}
+
+.orbital-node-tooltip {
+  position: absolute;
+  pointer-events: auto;
+  z-index: 60;
+  white-space: normal;
+  animation: fadeInScale 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 20px rgba(56, 189, 248, 0.35));
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+

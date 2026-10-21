@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" fill="none">
+  <defs>
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a7f3d0" />
+      <stop offset="40%" stop-color="#10b981" />
+      <stop offset="85%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+    <linearGradient id="iceCyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="50%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+    <filter id="emeraldGlow" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Ambient Emerald Aura -->
+  <circle cx="60" cy="60" r="46" fill="rgba(16,185,129,0.14)" filter="url(#emeraldGlow)" />
+  <circle cx="60" cy="60" r="48" stroke="url(#emeraldGrad)" stroke-width="1.2" stroke-dasharray="4 6" opacity="0.6" />
+
+  <!-- Global Orbital Ring with Cyan Ice Glow -->
+  <ellipse cx="60" cy="60" rx="46" ry="18" stroke="url(#iceCyanGrad)" stroke-width="2.2" stroke-dasharray="8 4" transform="rotate(-25 60 60)" filter="url(#emeraldGlow)" />
+
+  <!-- Supersonic Aerodynamic Cargo Chevron / Wings -->
+  <path d="M22 74 L58 36 L100 36 L76 74 Z" fill="rgba(16,185,129,0.24)" stroke="url(#emeraldGrad)" stroke-width="2.8" stroke-linejoin="round" filter="url(#emeraldGlow)" />
+  
+  <!-- Inner Precision Ice Chevron -->
+  <path d="M40 74 L62 50 L90 50 L74 74 Z" fill="url(#iceCyanGrad)" opacity="0.9" />
+
+  <!-- Central Kinetic Pivot -->
+  <circle cx="60" cy="60" r="5.5" fill="#ffffff" filter="url(#emeraldGlow)" />
+  <circle cx="60" cy="60" r="2.5" fill="#047857" />
+
+  <!-- Orbiting Node Satellites -->
+  <circle cx="98" cy="46" r="3.5" fill="#38bdf8" filter="url(#emeraldGlow)" />
+  <circle cx="22" cy="74" r="3.5" fill="#a7f3d0" filter="url(#emeraldGlow)" />
+</svg>

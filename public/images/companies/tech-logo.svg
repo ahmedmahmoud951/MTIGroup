@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" fill="none">
+  <defs>
+    <linearGradient id="techCyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#bae6fd" />
+      <stop offset="40%" stop-color="#38bdf8" />
+      <stop offset="80%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+    <linearGradient id="techCoreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="50%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+    <filter id="techGlow" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Ambient Glow Aura -->
+  <circle cx="60" cy="60" r="46" fill="rgba(56,189,248,0.15)" filter="url(#techGlow)" />
+  <circle cx="60" cy="60" r="48" stroke="url(#techCyanGrad)" stroke-width="1.2" stroke-dasharray="4 6" opacity="0.6" />
+
+  <!-- Outer Isometric Tech Cube / Hexagon -->
+  <polygon points="60,18 96,38 96,82 60,102 24,82 24,38" stroke="url(#techCyanGrad)" stroke-width="2.5" fill="rgba(14,165,233,0.12)" filter="url(#techGlow)" />
+  
+  <!-- Inner Dynamic Hexagon -->
+  <polygon points="60,28 86,43 86,77 60,92 34,77 34,43" stroke="#e0f2fe" stroke-width="1.8" fill="rgba(2,132,199,0.2)" />
+
+  <!-- Central Crystalline Nexus -->
+  <polygon points="60,42 76,60 60,78 44,60" fill="url(#techCoreGrad)" filter="url(#techGlow)" />
+  <circle cx="60" cy="60" r="5" fill="#ffffff" />
+
+  <!-- Circuit Trace Lines -->
+  <line x1="60" y1="18" x2="60" y2="42" stroke="#38bdf8" stroke-width="2" />
+  <line x1="60" y1="78" x2="60" y2="102" stroke="#38bdf8" stroke-width="2" />
+  <line x1="24" y1="60" x2="44" y2="60" stroke="#38bdf8" stroke-width="2" />
+  <line x1="76" y1="60" x2="96" y2="60" stroke="#38bdf8" stroke-width="2" />
+
+  <!-- Floating Satellites -->
+  <circle cx="60" cy="18" r="3.5" fill="#e0f2fe" filter="url(#techGlow)" />
+  <circle cx="96" cy="38" r="3" fill="#38bdf8" />
+  <circle cx="96" cy="82" r="3" fill="#38bdf8" />
+  <circle cx="60" cy="102" r="3.5" fill="#e0f2fe" filter="url(#techGlow)" />
+  <circle cx="24" cy="82" r="3" fill="#38bdf8" />
+  <circle cx="24" cy="38" r="3" fill="#38bdf8" />
+</svg>

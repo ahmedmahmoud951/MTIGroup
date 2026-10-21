@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" fill="none">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="35%" stop-color="#f59e0b" />
+      <stop offset="85%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+    <linearGradient id="burgundyGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(244,63,94,0.35)" />
+      <stop offset="100%" stop-color="rgba(159,18,57,0.45)" />
+    </linearGradient>
+    <filter id="goldGlow" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Ambient Golden Halo -->
+  <circle cx="60" cy="60" r="46" fill="rgba(245,158,11,0.12)" filter="url(#goldGlow)" />
+  <circle cx="60" cy="60" r="48" stroke="url(#goldGrad)" stroke-width="1.2" stroke-dasharray="4 6" opacity="0.6" />
+
+  <!-- Side Flank Towers in Burgundy Glass -->
+  <rect x="22" y="46" width="18" height="50" rx="4" fill="url(#burgundyGlass)" stroke="#fb7185" stroke-width="1.8" />
+  <rect x="80" y="46" width="18" height="50" rx="4" fill="url(#burgundyGlass)" stroke="#fb7185" stroke-width="1.8" />
+  
+  <!-- Architectural Spire Lines on Flanks -->
+  <line x1="31" y1="52" x2="31" y2="90" stroke="#fecdd3" stroke-width="1.2" stroke-dasharray="2 3" opacity="0.7" />
+  <line x1="89" y1="52" x2="89" y2="90" stroke="#fecdd3" stroke-width="1.2" stroke-dasharray="2 3" opacity="0.7" />
+
+  <!-- Center Mega Skyscraper Apex -->
+  <polygon points="60,14 80,36 80,96 40,96 40,36" stroke="url(#goldGrad)" stroke-width="2.6" fill="rgba(245,158,11,0.18)" filter="url(#goldGlow)" />
+
+  <!-- Skyscraper Facet Accents -->
+  <line x1="60" y1="16" x2="60" y2="96" stroke="#fef08a" stroke-width="1.8" />
+  <line x1="40" y1="52" x2="80" y2="52" stroke="url(#goldGrad)" stroke-width="1.4" />
+  <line x1="40" y1="68" x2="80" y2="68" stroke="url(#goldGrad)" stroke-width="1.4" />
+  <line x1="40" y1="84" x2="80" y2="84" stroke="url(#goldGrad)" stroke-width="1.4" />
+
+  <!-- Beacon Diamond Tip -->
+  <polygon points="60,8 65,14 60,20 55,14" fill="#ffffff" filter="url(#goldGlow)" />
+
+  <!-- Structural Base Foundation -->
+  <line x1="16" y1="98" x2="104" y2="98" stroke="url(#goldGrad)" stroke-width="3" stroke-linecap="round" />
+</svg>

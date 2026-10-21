@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" fill="none">
+  <defs>
+    <!-- Cyan Ice Gradient -->
+    <linearGradient id="mtiCyanIce" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="25%" stop-color="#bae6fd" />
+      <stop offset="65%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+
+    <!-- Deep iPhone Burgundy / Velvet Wine -->
+    <linearGradient id="mtiBurgundyWine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#881337" />
+      <stop offset="50%" stop-color="#4c051e" />
+      <stop offset="100%" stop-color="#19020d" />
+    </linearGradient>
+
+    <!-- Metallic Gold Accent for Holding Imperial Status -->
+    <linearGradient id="mtiCrownGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="50%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+
+    <filter id="mtiEpicGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <radialGradient id="mtiAuraRadial" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.35" />
+      <stop offset="60%" stop-color="#f43f5e" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#14020c" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Ambient Pulsing Glow Circle -->
+  <circle cx="120" cy="120" r="110" fill="url(#mtiAuraRadial)" />
+
+  <!-- Outer Celestial Orbital Ring -->
+  <circle cx="120" cy="120" r="102" stroke="url(#mtiCyanIce)" stroke-width="1.8" stroke-dasharray="8 6" opacity="0.65" />
+  
+  <!-- Outer Hexagonal / Octagonal Crystal Shield -->
+  <polygon points="120,22 188,50 216,120 188,190 120,218 52,190 24,120 52,50" 
+           stroke="url(#mtiCyanIce)" stroke-width="3" fill="url(#mtiBurgundyWine)" filter="url(#mtiEpicGlow)" />
+
+  <!-- Inner Diamond Core -->
+  <polygon points="120,40 180,120 120,200 60,120" 
+           stroke="rgba(244,63,94,0.5)" stroke-width="1.5" fill="rgba(19,3,12,0.85)" />
+
+  <!-- Crown Apex Symbol (Holding Status) -->
+  <path d="M102,68 L110,80 L120,62 L130,80 L138,68 L136,88 L104,88 Z" 
+        fill="url(#mtiCrownGold)" filter="url(#mtiEpicGlow)" />
+  <circle cx="102" cy="66" r="2.5" fill="#fef08a" />
+  <circle cx="120" cy="60" r="3.2" fill="#ffffff" filter="url(#mtiEpicGlow)" />
+  <circle cx="138" cy="66" r="2.5" fill="#fef08a" />
+
+  <!-- MTI Typography Monogram -->
+  <text x="120" y="142" 
+        text-anchor="middle" 
+        font-family="system-ui, -apple-system, sans-serif" 
+        font-size="40" 
+        font-weight="900" 
+        letter-spacing="4" 
+        fill="url(#mtiCyanIce)" 
+        filter="url(#mtiEpicGlow)">
+    MTI
+  </text>
+
+  <!-- Sub-label GROUP HOLDING -->
+  <text x="120" y="166" 
+        text-anchor="middle" 
+        font-family="system-ui, -apple-system, sans-serif" 
+        font-size="11" 
+        font-weight="800" 
+        letter-spacing="5" 
+        fill="#bae6fd" 
+        opacity="0.9">
+    GROUP
+  </text>
+
+  <!-- Facet Corner Jewels -->
+  <circle cx="120" cy="22" r="4.5" fill="#ffffff" filter="url(#mtiEpicGlow)" />
+  <circle cx="216" cy="120" r="4" fill="#38bdf8" filter="url(#mtiEpicGlow)" />
+  <circle cx="120" cy="218" r="4.5" fill="#ffffff" filter="url(#mtiEpicGlow)" />
+  <circle cx="24" cy="120" r="4" fill="#38bdf8" filter="url(#mtiEpicGlow)" />
+</svg>
