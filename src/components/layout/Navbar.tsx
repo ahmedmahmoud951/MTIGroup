@@ -61,35 +61,39 @@ export default function Navbar() {
       {/* Top Glacial Cyan-Ice Light Shimmer */}
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-sky-400/90 to-transparent opacity-90 shadow-[0_0_10px_rgba(56,189,248,0.6)]" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-3.5 group select-none">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-sky-400 via-rose-600 to-burgundy-900 p-0.5 shadow-lg shadow-sky-950/70 group-hover:scale-105 group-hover:shadow-[0_0_15px_rgba(56,189,248,0.5)] transition-all duration-300">
-            <div className="w-full h-full bg-[#1a0410] rounded-[14px] flex items-center justify-center border border-sky-300/30 p-1 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between">
+        {/* Brand Logo - Enlarged Luxury Pedestal */}
+        <Link href="/" className="flex items-center gap-4 group select-none">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-tr from-sky-400 via-rose-500 to-sky-300 p-0.5 shadow-xl shadow-sky-950/80 group-hover:scale-105 group-hover:shadow-[0_0_25px_rgba(56,189,248,0.7)] transition-all duration-300 shrink-0">
+            <div className="w-full h-full bg-white rounded-[14px] flex items-center justify-center border border-sky-300/50 p-1.5 overflow-hidden shadow-inner">
               {holdingLogo ? (
                 <Image
                   key={holdingLogo}
                   src={getImageUrl(holdingLogo)}
-                  alt="MTI Holding"
-                  width={40}
-                  height={40}
-                  className="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(56,189,248,0.6)]"
+                  alt="MTI Group"
+                  width={80}
+                  height={80}
+                  priority
+                  className="w-full h-full object-contain filter drop-shadow-[0_1px_4px_rgba(0,0,0,0.15)] group-hover:scale-105 transition-transform"
                   unoptimized={true}
-                  onError={() => setHoldingLogo("/images/companies/mti-holding.png")}
+                  onError={() => setHoldingLogo("/images/companies/mti-holding.webp")}
                 />
               ) : (
-                <span className="font-black text-lg ice-cyan-gradient-text tracking-wider">
+                <span className="font-black text-2xl ice-cyan-gradient-text tracking-wider">
                   MTI
                 </span>
               )}
             </div>
           </div>
           <div>
-            <span className="font-extrabold text-xl tracking-tight text-white group-hover:text-sky-200 transition-colors flex items-center gap-1.5">
-              <span className="ice-gradient-text">{language === "ar" ? holdingNameAr : holdingNameEn}</span>
-              <span className="text-[10px] px-2 py-0.5 rounded-full glass-ice-pill text-sky-200 font-mono font-bold tracking-wider border-sky-400/30 shadow-[0_0_10px_rgba(56,189,248,0.25)]">HOLDING</span>
+            <span className="font-black text-xl sm:text-2xl tracking-tight text-white group-hover:text-sky-200 transition-colors flex items-center gap-2">
+              <span className="ice-gradient-text">
+                {language === "ar"
+                  ? holdingNameAr.replace(/القابضة/g, "").replace(/\s+/g, " ").trim()
+                  : holdingNameEn.replace(/Holding/gi, "").replace(/\s+/g, " ").trim()}
+              </span>
             </span>
-            <span className="block text-[10px] uppercase tracking-widest text-sky-300/80 font-bold">
+            <span className="block text-[11px] sm:text-xs uppercase tracking-widest text-sky-300/90 font-bold mt-0.5">
               {language === "ar" ? "الريادة في قطاعات المستقبل" : "Pioneering Modern Industries"}
             </span>
           </div>

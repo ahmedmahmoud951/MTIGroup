@@ -124,73 +124,105 @@ class SignalRManager {
           this.connection = null;
         }
 
-        this.connection = new signalR.HubConnectionBuilder()
-          .withUrl(hubUrl, {
-            accessTokenFactory: () => token || "",
-            transport: signalR.HttpTransportType.WebSockets | signalR.HttpTransportType.ServerSentEvents | signalR.HttpTransportType.LongPolling,
-          })
-          .withAutomaticReconnect([0, 1000, 3000, 5000, 10000, 20000])
-          .configureLogging(signalR.LogLevel.Warning)
-          .build();
+        const connectionOptions: signalR.IHttpConnectionOptions = {
+          transport: signalR.HttpTransportType.WebSockets | signalR.HttpTransportType.ServerSentEvents | signalR.HttpTransportType.LongPolling,
+          skipNegotiation: false,
+        };
 
-        // Generous timeouts to prevent free-tier reverse proxy from severing connection
-        this.connection.serverTimeoutInMilliseconds = 120000;
-        this.connection.keepAliveIntervalInMilliseconds = 15000;
+        if (token && token.trim().length > 0) {
+          connectionOptions.accessTokenFactory = () => token;
+        }
 
-        // Lifecycle Handlers
-        this.connection.onreconnecting((error) => {
-          logger.signalrWarn("Connection lost. Reconnecting automatically in background...", error?.message);
-          this.setStatus("Reconnecting");
-        });
+        const buildConnection = (targetUrl: string) => {
+          const conn = new signalR.HubConnectionBuilder()
+            .withUrl(targetUrl, connectionOptions)
+            .withAutomaticReconnect([0, 1000, 3000, 5000, 10000, 20000])
+            .configureLogging(signalR.LogLevel.Warning)
+            .build();
 
-        this.connection.onreconnected((connectionId) => {
-          logger.signalr(`Reconnected successfully! New Connection ID: ${connectionId}`);
-          this.setStatus("Connected");
-          if (this.activeCompanyId) {
-            logger.signalr(`Re-joining company group: company:${this.activeCompanyId}`);
-            this.connection?.invoke("JoinCompanyGroup", this.activeCompanyId).catch((e) => {
-              logger.signalrError("Failed to re-join company group", e);
-            });
-          }
-          this.notify("Reconnected", { connectionId });
-        });
+          conn.serverTimeoutInMilliseconds = 120000;
+          conn.keepAliveIntervalInMilliseconds = 15000;
 
-        this.connection.onclose((error) => {
-          logger.signalrError("Connection closed", error?.message);
-          this.setStatus("Disconnected");
-        });
-
-        // Register all real-time events
-        const events = [
-          "CompanyCreated",
-          "CompanyUpdated",
-          "CompanyDeleted",
-          "ProjectCreated",
-          "ProjectUpdated",
-          "ProjectDeleted",
-          "ServiceCreated",
-          "ServiceUpdated",
-          "ServiceDeleted",
-          "PageCreated",
-          "PageUpdated",
-          "PageDeleted",
-          "PageSectionUpdated",
-          "NavigationUpdated",
-          "SettingsUpdated",
-          "NotificationCreated",
-        ];
-
-        events.forEach((eventName) => {
-          this.connection?.on(eventName, (data) => {
-            logger.signalrEvent(eventName, data);
-            this.notify(eventName, data);
+          conn.onreconnecting((error) => {
+            logger.signalrWarn("Connection lost. Reconnecting automatically in background...", error?.message);
+            this.setStatus("Reconnecting");
           });
-        });
 
-        await this.connection.start();
-        this.setStatus("Connected");
-        logger.signalr(`Connected successfully to ${hubUrl} (Connection ID: ${this.connection.connectionId})`);
-        return this.connection;
+          conn.onreconnected((connectionId) => {
+            logger.signalr(`Reconnected successfully! New Connection ID: ${connectionId}`);
+            this.setStatus("Connected");
+            if (this.activeCompanyId) {
+              logger.signalr(`Re-joining company group: company:${this.activeCompanyId}`);
+              conn.invoke("JoinCompanyGroup", this.activeCompanyId).catch((e) => {
+                logger.signalrError("Failed to re-join company group", e);
+              });
+            }
+            this.notify("Reconnected", { connectionId });
+          });
+
+          conn.onclose((error) => {
+            logger.signalrError("Connection closed", error?.message);
+            this.setStatus("Disconnected");
+          });
+
+          const events = [
+            "CompanyCreated",
+            "CompanyUpdated",
+            "CompanyDeleted",
+            "ProjectCreated",
+            "ProjectUpdated",
+            "ProjectDeleted",
+            "ServiceCreated",
+            "ServiceUpdated",
+            "ServiceDeleted",
+            "PageCreated",
+            "PageUpdated",
+            "PageDeleted",
+            "PageSectionUpdated",
+            "NavigationUpdated",
+            "SettingsUpdated",
+            "NotificationCreated",
+          ];
+
+          events.forEach((eventName) => {
+            conn.on(eventName, (data) => {
+              logger.signalrEvent(eventName, data);
+              this.notify(eventName, data);
+            });
+          });
+
+          return conn;
+        };
+
+        this.connection = buildConnection(hubUrl);
+
+        try {
+          await this.connection.start();
+          this.setStatus("Connected");
+          logger.signalr(`Connected successfully to ${hubUrl} (Connection ID: ${this.connection.connectionId})`);
+          return this.connection;
+        } catch (firstErr: any) {
+          logger.signalrWarn("Direct connection to SignalR hub failed, attempting same-origin proxy fallback...", firstErr?.message);
+          
+          // Fallback to relative /hubs/cms (proxied via Next.js rewrites)
+          if (hubUrl.startsWith("http")) {
+            const relativeUrl = `/hubs/cms${companyId ? `?companyId=${companyId}` : ""}`;
+            try {
+              if (this.connection) {
+                try { await this.connection.stop(); } catch {}
+              }
+              this.connection = buildConnection(relativeUrl);
+              await this.connection.start();
+              this.setStatus("Connected");
+              logger.signalr(`Connected successfully via relative proxy: ${relativeUrl} (Connection ID: ${this.connection.connectionId})`);
+              return this.connection;
+            } catch (fallbackErr: any) {
+              logger.signalrError("Proxy fallback connection also failed", fallbackErr?.message);
+              throw fallbackErr;
+            }
+          }
+          throw firstErr;
+        }
       } catch (err: any) {
         this.setStatus("Disconnected");
         logger.signalrError("Connection attempt failed", err?.message || err);

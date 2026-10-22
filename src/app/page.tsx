@@ -46,22 +46,22 @@ import {
 const DEFAULT_COMPANIES: Company[] = [
   {
     id: "comp-tech-1",
-    name: "إم تي آي للتكنولوجيا والحلول الرقمية",
-    slug: "mti-technology",
-    description: "بنية سحابية ذكية، حلول ذكاء اصطناعي وأمن سيبراني للمؤسسات والشركات الكبرى بمصر.",
-    shortDescription: "التحول الرقمي والحوسبة السحابية المتقدمة",
-    logoUrl: "/uploads/f0dbe6ac4a454e93bf4959a6c3433529.png",
+    name: "إم تي آي للهندسة والمقاولات (MTI Eng)",
+    slug: "mti-engineering",
+    description: "ريادة وطنية في تنفيذ المشاريع الإنشائية العملاقة، البنية التحتية، والمجمعات السكنية والتجارية الكبرى بأعلى معايير الاستدامة.",
+    shortDescription: "المقاولات العامة والإنشاءات الكبرى",
+    logoUrl: "/images/companies/mti-eng.webp",
     displayOrder: 1,
     isActive: true,
     createdAt: "2026-01-01"
   },
   {
     id: "comp-royal-2",
-    name: "إم تي آي رويال للمشاريع والاستثمار",
+    name: "إم تي آي رويال للاستثمار (Royal)",
     slug: "mti-royal",
-    description: "تطوير المشاريع الاستثمارية والإنشائية الفاخرة والاستشارات الهندسية المتطورة.",
+    description: "بنية سحابية ذكية، حلول ذكاء اصطناعي وأمن سيبراني وتطوير المشاريع الاستثمارية الكبرى.",
     shortDescription: "المشاريع الاستثمارية الكبرى والتطوير",
-    logoUrl: "/uploads/5b8484ac00dc444488486d67d4ba63e1.png",
+    logoUrl: "/images/companies/royal.webp",
     displayOrder: 2,
     isActive: true,
     createdAt: "2026-01-01"
@@ -72,7 +72,7 @@ const DEFAULT_COMPANIES: Company[] = [
     slug: "ecee",
     description: "شبكات نقل وتوزيع متطورة، مستودعات ذكية وسلاسل إمداد متكاملة تغطي الموانئ المصرية والمحافظات.",
     shortDescription: "سلاسل الإمداد والنقل واللوجستيات",
-    logoUrl: "/uploads/9ffc1447745b422185a27b7b7cbd6534.png",
+    logoUrl: "/images/companies/ecee.webp",
     displayOrder: 3,
     isActive: true,
     createdAt: "2026-01-01"
@@ -83,7 +83,7 @@ const DEFAULT_COMPANIES: Company[] = [
     slug: "red-line",
     description: "حلول تكنولوجية متقدمة، خدمات متكاملة وابتكار مستمر يواكب أعلى معايير الجودة العالمية.",
     shortDescription: "الابتكار والحلول الذكية المتكاملة",
-    logoUrl: "/uploads/82592440bc5245d3aa87c033bac6c324.png",
+    logoUrl: "/images/companies/redline.webp",
     displayOrder: 4,
     isActive: true,
     createdAt: "2026-01-01"
@@ -540,83 +540,6 @@ export default function HomePage() {
                 </button>
               </div>
             </div>
-          </div>
-
-          {/* Bottom Row: Sector Category Filter Chips */}
-          <div className="flex flex-wrap items-center gap-2">
-            <button
-              onClick={() => setSelectedSector("all")}
-              className={`px-4 py-2 rounded-xl text-xs font-bold border transition-all flex items-center gap-2 cursor-pointer ${
-                selectedSector === "all"
-                  ? "luxury-ice-button text-white border-sky-300/80 shadow-lg"
-                  : "glass-ice-pill text-sky-200/80 border-sky-400/20 hover:border-sky-300/50"
-              }`}
-            >
-              <span>{isAr ? "كافة الشركات" : "All Subsidiaries"}</span>
-              <span className="px-1.5 py-0.5 rounded-md bg-white/10 text-[10px] font-mono">
-                {sectorCounts.all}
-              </span>
-            </button>
-
-            <button
-              onClick={() => setSelectedSector("tech")}
-              className={`px-4 py-2 rounded-xl text-xs font-bold border transition-all flex items-center gap-2 cursor-pointer ${
-                selectedSector === "tech"
-                  ? "bg-sky-500/30 text-white border-sky-300 shadow-[0_0_15px_rgba(56,189,248,0.5)]"
-                  : "glass-ice-pill text-sky-200/80 border-sky-400/20 hover:border-sky-300/50"
-              }`}
-            >
-              <Cpu className="w-3.5 h-3.5 text-sky-300" />
-              <span>{isAr ? "التكنولوجيا والحوسبة" : "Cloud & Tech"}</span>
-              <span className="px-1.5 py-0.5 rounded-md bg-white/10 text-[10px] font-mono">
-                {sectorCounts.tech}
-              </span>
-            </button>
-
-            <button
-              onClick={() => setSelectedSector("infra")}
-              className={`px-4 py-2 rounded-xl text-xs font-bold border transition-all flex items-center gap-2 cursor-pointer ${
-                selectedSector === "infra"
-                  ? "bg-amber-500/30 text-white border-amber-300 shadow-[0_0_15px_rgba(245,158,11,0.5)]"
-                  : "glass-ice-pill text-amber-200/80 border-amber-400/20 hover:border-amber-300/50"
-              }`}
-            >
-              <HardHat className="w-3.5 h-3.5 text-amber-300" />
-              <span>{isAr ? "المقاولات والإنشاءات" : "Civil & Infra"}</span>
-              <span className="px-1.5 py-0.5 rounded-md bg-white/10 text-[10px] font-mono">
-                {sectorCounts.infra}
-              </span>
-            </button>
-
-            <button
-              onClick={() => setSelectedSector("logistics")}
-              className={`px-4 py-2 rounded-xl text-xs font-bold border transition-all flex items-center gap-2 cursor-pointer ${
-                selectedSector === "logistics"
-                  ? "bg-emerald-500/30 text-white border-emerald-300 shadow-[0_0_15px_rgba(16,185,129,0.5)]"
-                  : "glass-ice-pill text-emerald-200/80 border-emerald-400/20 hover:border-emerald-300/50"
-              }`}
-            >
-              <Truck className="w-3.5 h-3.5 text-emerald-400" />
-              <span>{isAr ? "اللوجستيات وسلاسل الإمداد" : "Logistics & Supply"}</span>
-              <span className="px-1.5 py-0.5 rounded-md bg-white/10 text-[10px] font-mono">
-                {sectorCounts.logistics}
-              </span>
-            </button>
-
-            <button
-              onClick={() => setSelectedSector("holding")}
-              className={`px-4 py-2 rounded-xl text-xs font-bold border transition-all flex items-center gap-2 cursor-pointer ${
-                selectedSector === "holding"
-                  ? "bg-rose-500/30 text-white border-rose-300 shadow-[0_0_15px_rgba(244,63,94,0.5)]"
-                  : "glass-ice-pill text-rose-200/80 border-rose-400/20 hover:border-rose-300/50"
-              }`}
-            >
-              <Building2 className="w-3.5 h-3.5 text-rose-400" />
-              <span>{isAr ? "شركات استراتيجية" : "Strategic Enterprises"}</span>
-              <span className="px-1.5 py-0.5 rounded-md bg-white/10 text-[10px] font-mono">
-                {sectorCounts.holding}
-              </span>
-            </button>
           </div>
         </div>
 

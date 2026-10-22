@@ -322,14 +322,14 @@ export default function OrbitalConstellation({
             const isHovered = hoveredCompanyId === company.id;
             const isActive = isSelected || isHovered;
 
-            // Geometry vector from Center Core (radius ~105px) to Subsidiary Node (radius ~58px)
+            // Geometry vector from Center Core (radius ~115px) to Subsidiary Node (radius ~65px)
             const dx = x - CENTER;
             const dy = y - CENTER;
             const dist = Math.sqrt(dx * dx + dy * dy);
-            const startX = CENTER + (dx / dist) * 105;
-            const startY = CENTER + (dy / dist) * 105;
-            const endX = x - (dx / dist) * 58;
-            const endY = y - (dy / dist) * 58;
+            const startX = CENTER + (dx / dist) * 115;
+            const startY = CENTER + (dy / dist) * 115;
+            const endX = x - (dx / dist) * 65;
+            const endY = y - (dy / dist) * 65;
 
             // Select matching outward arrowhead marker
             let markerId = "arrow-outward-ice";
@@ -449,20 +449,20 @@ export default function OrbitalConstellation({
             {/* Center Crown Apex Badge */}
             <div className="absolute -top-4 px-3.5 py-0.5 rounded-full bg-gradient-to-r from-amber-500 via-rose-600 to-amber-500 text-[9px] sm:text-[10px] font-black tracking-widest text-white shadow-xl border border-amber-300/50 flex items-center gap-1.5 z-30">
               <Crown className="w-3.5 h-3.5 text-amber-200 fill-amber-200" />
-              <span>MTI HOLDING</span>
+              <span>MTI GROUP</span>
             </div>
 
             {/* Enhanced Logo Viewport: 100% Circular, High-Contrast & Crystal Clear */}
             <div className="orbital-logo-viewport rounded-full transition-transform duration-300 group-hover:scale-105">
               {groupLogoUrl ? (
-                <div className="w-full h-full rounded-full overflow-hidden flex items-center justify-center p-0.5 bg-white/5">
+                <div className="w-full h-full rounded-full overflow-hidden flex items-center justify-center p-0 bg-white">
                   <Image
                     key={groupLogoUrl}
                     src={getImageUrl(groupLogoUrl)}
                     alt={groupName || "MTI Group"}
-                    width={150}
-                    height={150}
-                    className="w-full h-full object-contain filter drop-shadow-[0_2px_10px_rgba(0,0,0,0.35)] p-0.5"
+                    width={180}
+                    height={180}
+                    className="w-full h-full object-contain filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.1)] p-0"
                     priority
                     unoptimized={true}
                     onError={(e) => {
@@ -599,13 +599,13 @@ export default function OrbitalConstellation({
                   {/* Outer Crystal Ring with Sector Colors */}
                   <div
                     style={{
-                      borderColor: isActive ? sector.color : "rgba(186, 230, 253, 0.6)",
+                      borderColor: isActive ? sector.color : "rgba(186, 230, 253, 0.7)",
                       boxShadow: isActive
-                        ? `0 0 40px ${sector.glow}, 0 12px 35px rgba(0,0,0,0.9)`
-                        : "0 8px 24px rgba(0,0,0,0.75)"
+                        ? `0 0 45px ${sector.glow}, 0 16px 40px rgba(0,0,0,0.9)`
+                        : "0 10px 28px rgba(0,0,0,0.8)"
                     }}
-                    className={`w-28 h-28 sm:w-32 sm:h-32 rounded-2xl p-1.5 flex items-center justify-center transition-all duration-300 relative border-2 ${
-                      isActive ? "bg-[#2c061d]/95" : "bg-[#190312]/90"
+                    className={`w-32 h-32 sm:w-36 sm:h-36 rounded-2xl p-1.5 flex items-center justify-center transition-all duration-300 relative border-2 ${
+                      isActive ? "bg-[#380825]/95 scale-110 z-40" : "bg-[#1d0415]/90 hover:scale-105"
                     }`}
                   >
                     {/* Active Corner Diamond Beacon */}
@@ -618,16 +618,17 @@ export default function OrbitalConstellation({
                       </div>
                     )}
 
-                    {/* Company Logo Disc: Maximized to fill the full space cleanly */}
-                    <div className="w-full h-full rounded-xl bg-gradient-to-br from-white/10 via-[#14020d]/95 to-[#080106] border border-sky-400/40 flex items-center justify-center p-1 overflow-hidden relative shadow-inner">
+                    {/* Company Logo Disc: Maximized to fill the full card cleanly with pure white backing */}
+                    <div className="w-full h-full rounded-xl bg-white border border-sky-300/40 flex items-center justify-center p-2 overflow-hidden relative shadow-[inset_0_1px_3px_rgba(0,0,0,0.08),_0_4px_14px_rgba(0,0,0,0.25)]">
                       {company.logoUrl ? (
                         <Image
                           key={`${company.id}-${company.logoUrl}`}
                           src={getImageUrl(company.logoUrl)}
                           alt={company.name}
-                          width={115}
-                          height={115}
-                          className="w-full h-full object-contain filter drop-shadow-[0_2px_10px_rgba(255,255,255,0.45)] transition-transform duration-300 group-hover:scale-105"
+                          width={140}
+                          height={140}
+                          priority
+                          className="w-full h-full object-contain filter drop-shadow-[0_1px_4px_rgba(0,0,0,0.12)] transition-transform duration-300 group-hover:scale-105"
                           unoptimized={true}
                           onError={(e) => {
                             const target = e.currentTarget as HTMLImageElement;
@@ -637,7 +638,7 @@ export default function OrbitalConstellation({
                           }}
                         />
                       ) : (
-                        <SectorIcon className="w-12 h-12 text-sky-200" />
+                        <SectorIcon className="w-12 h-12 text-sky-700" />
                       )}
                     </div>
                   </div>

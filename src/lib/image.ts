@@ -9,6 +9,28 @@ export function getImageUrl(url?: string | null): string {
 
   const trimmed = url.trim();
 
+  // Instant local WebP resolution for high-res corporate logos
+  if (trimmed.includes("9ffc1447745b422185a27b7b7cbd6534") || trimmed.includes("ecee")) {
+    return "/images/companies/ecee.webp";
+  }
+  if (
+    trimmed.includes("82592440bc5245d3aa87c033bac6c324") ||
+    trimmed.includes("ca99c8db560047d5b103864d0637df9b") ||
+    trimmed.includes("redline") ||
+    trimmed.includes("red-line")
+  ) {
+    return "/images/companies/redline.webp";
+  }
+  if (trimmed.includes("mti-holding") || trimmed.includes("holding")) {
+    return "/images/companies/mti-holding.webp";
+  }
+  if (trimmed.includes("mti-eng") || trimmed.includes("contracting")) {
+    return "/images/companies/mti-eng.webp";
+  }
+  if (trimmed.includes("royal")) {
+    return "/images/companies/royal.webp";
+  }
+
   // 1. Data URLs, Blob URLs, or full HTTP/HTTPS URLs
   if (
     trimmed.startsWith("http://") ||
